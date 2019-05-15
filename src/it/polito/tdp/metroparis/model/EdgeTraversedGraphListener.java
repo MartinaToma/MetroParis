@@ -54,7 +54,9 @@ public class EdgeTraversedGraphListener implements TraversalListener<Fermata, De
 		 */
 		
 		Fermata sourceVertex= grafo.getEdgeSource(ev.getEdge());
+		
 		Fermata targetVertex =grafo.getEdgeTarget(ev.getEdge());
+		
 		
 		/*se il grafo è orientato, allora source==parent;target==child
 		 * se il grafo non è orientato, potrebbe essere al contrario...		
