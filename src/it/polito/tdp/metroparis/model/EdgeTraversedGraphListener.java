@@ -9,17 +9,18 @@ import org.jgrapht.event.EdgeTraversalEvent;
 import org.jgrapht.event.TraversalListener;
 import org.jgrapht.event.VertexTraversalEvent;
 import org.jgrapht.graph.DefaultEdge;
+import org.jgrapht.graph.DefaultWeightedEdge;
 
-public class EdgeTraversedGraphListener implements TraversalListener<Fermata, DefaultEdge> {
+public class EdgeTraversedGraphListener implements TraversalListener<Fermata, DefaultWeightedEdge> {
 
-	Graph<Fermata,DefaultEdge> grafo;
+	Graph<Fermata,DefaultWeightedEdge> grafo;
 	
 	//è una mappa che punta dal basso verso l'alto.
 	//dal nodo figlio al nodo padre
 	
 	Map<Fermata,Fermata> back;
 	
-	public EdgeTraversedGraphListener(Graph<Fermata,DefaultEdge> grafo,Map<Fermata, Fermata> back) {
+	public EdgeTraversedGraphListener(Graph<Fermata,DefaultWeightedEdge> grafo,Map<Fermata, Fermata> back) {
 		this.grafo=grafo;
 		this.back = back;
 	}
@@ -38,7 +39,7 @@ public class EdgeTraversedGraphListener implements TraversalListener<Fermata, De
 
 	@Override
 	//ev è un evento
-	public void edgeTraversed(EdgeTraversalEvent<DefaultEdge> ev) {
+	public void edgeTraversed(EdgeTraversalEvent<DefaultWeightedEdge> ev) {
 		//dato un arco devo estrarre i 2 vertici
 		//di cui lo dovrei conoscere e l'altro no
 		
