@@ -79,12 +79,15 @@ public class Model {
 		List<ConnessioneVelocita> archipesati=dao.getConnessioneVelocita();		
 		for(ConnessioneVelocita cp:archipesati) {
 			//aggiunge il peso a un arco che ESISTE
-			Fermata partenza=fermate.get(cp.getStazP());
-			Fermata arrivo =fermate.get(cp.getStazA());
+			Fermata partenza=fermateIdMap.get(cp.getStazP());
+			//System.out.println(partenza);
+			Fermata arrivo =fermateIdMap.get(cp.getStazA());
 			double distanza=LatLngTool.distance(partenza.getCoords(), arrivo.getCoords(),LengthUnit.KILOMETER);
 			double peso=distanza/cp.getVelocita()*3600;
+			//System.out.println(peso);
 			//tempo in ore per peso *3600 ottengo i secondi
-						
+				
+			grafo.addEdge(partenza, arrivo);
 			grafo.setEdgeWeight(partenza, arrivo,peso);
 			
 			//oppure aggiungo archi e vertici insieme
@@ -113,7 +116,7 @@ public class Model {
 		//AGGIUNGO UN ASCOLTATORE ALL'ITERATORE A CUI PASSO I PARAMETRI
 		
 		//la classe EdgeTraversedGraphListener serve solo qua, la rendo privata
-		it.addTraversalListener(new EdgeTraversedGraphListener());
+		it.addTraversalListener(new EdgeTraversedGraphListener(grafo,backVisit));
 		
 		backVisit.put(source, null);//non ha il padre
 		while(it.hasNext()) {

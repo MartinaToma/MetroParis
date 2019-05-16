@@ -4,8 +4,8 @@ public class ConnessioneVelocita {
 
 	private int stazP;
 	private int stazA;
-	private int velocita;
-	public ConnessioneVelocita(int stazP, int stazA, int velocita) {
+	private double velocita;
+	public ConnessioneVelocita(int stazP, int stazA, double velocita) {
 		super();
 		this.stazP = stazP;
 		this.stazA = stazA;
@@ -23,10 +23,10 @@ public class ConnessioneVelocita {
 	public void setStazA(int stazA) {
 		this.stazA = stazA;
 	}
-	public int getVelocita() {
+	public double getVelocita() {
 		return velocita;
 	}
-	public void setVelocita(int velocita) {
+	public void setVelocita(double velocita) {
 		this.velocita = velocita;
 	}
 	@Override

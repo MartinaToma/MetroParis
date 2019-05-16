@@ -151,6 +151,7 @@ public class MetroDAO {
 			while (rs.next()) {
 				//ripesco un oggetto che c'era già		
 				ConnessioneVelocita item=new ConnessioneVelocita(rs.getInt("id_stazP"),	rs.getInt("id_stazA"),rs.getDouble("velocita"));
+				
 				result.add(item);
 				
 				//idFermata, String nome, LatLng coords
